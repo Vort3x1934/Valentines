@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine 💖</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #ffb6c1, #ff6f91);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Floating background hearts */
+.bg-heart {
+    position: fixed;
+    color: rgba(255,255,255,0.25);
+    animation: float 12s linear infinite;
+}
+
+@keyframes float {
+    from { transform: translateY(110vh); }
+    to { transform: translateY(-10vh); }
+}
+
+/* Scenes */
+.scene {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    color: white;
+    max-width: 90%;
+}
+
+.scene.active {
+    display: flex;
+    animation: fadeIn 1s ease forwards;
+}
+
+h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); }
+h2 { font-size: clamp(1.2rem, 3vw, 1.6rem); }
+p  { font-size: clamp(1rem, 2.5vw, 1.2rem); }
+
+.buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+button {
+    padding: 12px 28px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    background: white;
+    color: #ff4d6d;
+    transition: transform 0.25s;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+/* Floating NO */
+#noFloat {
+    position: relative;
+    transition: transform 0.6s ease;
+}
+
+#warning {
+    font-size: 0.9rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* Sparkly hearts */
+.heart {
+    position: fixed;
+    top: -20px;
+    font-size: 24px;
+    animation: fall 2s linear forwards;
+    pointer-events: none;
+    text-shadow: 0 0 8px #fff;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(120vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Confetti */
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    animation: confettiFall 2s linear forwards;
+}
+
+@keyframes confettiFall {
+    to {
+        transform: translateY(120vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* Polaroid */
+.polaroid {
+    background: white;
+    padding: 15px 15px 40px;
+    border-radius: 8px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    transform: rotate(-3deg);
+}
+
+.polaroid img {
+    width: min(220px, 70vw);
+    border-radius: 4px;
+}
+
+.bear-gif {
+    width: 100px;
+}
+
+.tenor-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+
+<body>
+
+<script>
+for (let i = 0; i < 22; i++) {
+    const h = document.createElement('div');
+    h.className = 'bg-heart';
+    h.innerHTML = '❤️';
+    h.style.left = Math.random() * 100 + 'vw';
+    h.style.fontSize = Math.random() * 30 + 20 + 'px';
+    h.style.animationDuration = Math.random() * 10 + 8 + 's';
+    document.body.appendChild(h);
+}
+</script>
+
+<!-- Scene 1 -->
+<div class="scene active" id="scene1">
+    <img class="bear-gif" src="https://media0.giphy.com/media/FWi8eqEsIB8w8/giphy.gif">
+    <h1 id="text1"></h1>
+    <h2 id="text2"></h2>
+    <button onclick="nextScene(2)">nO</button>
+</div>
+
+<!-- Scene 2 -->
+<div class="scene" id="scene2">
+    <h2 id="text3"></h2>
+    <p id="text4"></p>
+    <div class="buttons">
+        <button onclick="yesClicked()">Yes</button>
+        <button id="noFloat">No</button>
+    </div>
+    <p id="warning">😠 Stop trying to click no</p>
+</div>
+
+<!-- Scene 3 -->
+<div class="scene" id="scene3">
+    <div class="tenor-wrap">
+        <h1>YAY 💖🎉</h1>
+
+        <div class="tenor-gif-embed"
+            data-postid="8536880667384604096"
+            data-share-method="host"
+            data-aspect-ratio="1.3806"
+            data-width="160px">
+        </div>
+    </div>
+</div>
+
+<!-- Scene 4 -->
+<div class="scene" id="scene4">
+    <div class="polaroid">
+        <img src="me.jpeg">
+    </div>
+    <p>Me right now eheheheheh 🤭</p>
+    <button onclick="nextScene(5)">Continue</button>
+</div>
+
+<!-- Scene 5 -->
+<div class="scene" id="scene5">
+    <div class="tenor-wrap">
+        <h1>Ok I love you.....Kinda bye</h1>
+
+        <div class="tenor-gif-embed"
+            data-postid="22536058"
+            data-share-method="host"
+            data-aspect-ratio="1"
+            data-width="160px">
+        </div>
+    </div>
+
+    <h2>MWAH 😘</h2>
+    <button onclick="replay()">Replay</button>
+</div>
+
+<!-- Tenor script (ONLY ONCE) -->
+<script async src="https://tenor.com/embed.js"></script>
+
+<script>
+function typeText(id, text, speed = 45) {
+    let i = 0;
+    const el = document.getElementById(id);
+    el.innerHTML = '';
+    const interval = setInterval(() => {
+        el.innerHTML += text.charAt(i);
+        i++;
+        if (i >= text.length) clearInterval(interval);
+    }, speed);
+}
+
+typeText('text1', 'Hi My lil Polar Bear 🐻‍❄️');
+setTimeout(() => typeText('text2', 'Can I ask you something?'), 1200);
+
+function nextScene(n) {
+    document.querySelectorAll('.scene').forEach(s => s.classList.remove('active'));
+    document.getElementById('scene' + n).classList.add('active');
+
+    if (n === 2) {
+        typeText('text3', 'Will you be my Valentine? 💘');
+        setTimeout(() => typeText('text4', 'Cause I kinda like you. (Maybe a little)'), 900);
+    }
+}
+
+function yesClicked() {
+    nextScene(3);
+    sparklyHearts();
+    confettiBurst();
+    setTimeout(() => nextScene(4), 2000);
+}
+
+function sparklyHearts() {
+    for (let i = 0; i < 40; i++) {
+        const h = document.createElement('div');
+        h.className = 'heart';
+        h.innerHTML = ['❤️','💖','✨'][Math.floor(Math.random()*3)];
+        h.style.left = Math.random() * 100 + 'vw';
+        document.body.appendChild(h);
+        setTimeout(() => h.remove(), 2000);
+    }
+}
+
+function confettiBurst() {
+    for (let i = 0; i < 60; i++) {
+        const c = document.createElement('div');
+        c.className = 'confetti';
+        c.style.left = Math.random() * 100 + 'vw';
+        c.style.background = `hsl(${Math.random()*360},100%,60%)`;
+        document.body.appendChild(c);
+        setTimeout(() => c.remove(), 2000);
+    }
+}
+
+const noBtn = document.getElementById('noFloat');
+const warning = document.getElementById('warning');
+
+noBtn.addEventListener('mouseenter', moveNo);
+noBtn.addEventListener('touchstart', moveNo);
+noBtn.addEventListener('click', () => {
+    warning.style.opacity = 1;
+    setTimeout(() => warning.style.opacity = 0, 1200);
+});
+
+function moveNo() {
+    const x = Math.random() * 160 - 80;
+    const y = Math.random() * 160 - 80;
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+}
+
+function replay() {
+    noBtn.style.transform = 'translate(0,0)';
+    ['text1','text2','text3','text4'].forEach(id => {
+        document.getElementById(id).innerHTML = '';
+    });
+    document.querySelectorAll('.scene').forEach(s => s.classList.remove('active'));
+    document.getElementById('scene1').classList.add('active');
+
+    setTimeout(() => {
+        typeText('text1', 'Hi My lil Polar Bear 🐻‍❄️');
+        setTimeout(() => typeText('text2', 'Can I ask you something?'), 1200);
+    }, 300);
+}
+</script>
+
+</body>
+</html>
